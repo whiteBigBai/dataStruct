@@ -17,6 +17,7 @@ bool ListInsert(SqList &L, int i, ElemType e)
         L.data[j] = L.data[j - 1];
     L.data[i - 1] = e;
     L.length++;
+    return true;
 }
 
 void InitList(SqList &L)
