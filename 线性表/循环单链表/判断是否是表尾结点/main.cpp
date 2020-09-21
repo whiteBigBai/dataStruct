@@ -1,9 +1,5 @@
-/*
- * @Date: 2020-09-19 11:28:40
- * @LastEditors: bailiang
- * @LastEditTime: 2020-09-19 15:51:36
- */
-#include <iostream>
+#include <stdio.h>
+#include <stdlib.h>
 typedef int ElemType;
 
 typedef struct LNode

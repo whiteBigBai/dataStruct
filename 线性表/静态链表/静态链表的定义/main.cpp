@@ -1,9 +1,5 @@
-/*
- * @Date: 2020-09-19 15:26:29
- * @LastEditors: bailiang
- * @LastEditTime: 2020-09-19 15:50:52
- */
-#include <iostream>
+#include <stdio.h>
+#include <stdlib.h>
 #define MaxSize 10 //静态链表的最大长度
 typedef int ElemType;
 struct Node //静态链表结构类型的定义
@@ -12,7 +8,7 @@ struct Node //静态链表结构类型的定义
     int next; //下一个数组元素的下标
 };
 
-int main()
+int	main(int argc, char *argv[])
 {
     struct Node a[MaxSize]; //数组a为静态链表
 

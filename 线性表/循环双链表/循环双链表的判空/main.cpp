@@ -1,9 +1,5 @@
-/*
- * @Date: 2020-09-19 15:12:05
- * @LastEditors: bailiang
- * @LastEditTime: 2020-09-19 15:52:26
- */
-#include <iostream>
+#include <stdio.h>
+#include <stdlib.h>
 typedef int ElemType;
 typedef struct DNode
 {

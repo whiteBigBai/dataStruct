@@ -1,4 +1,5 @@
-#include <iostream>
+#include <stdio.h>
+#include <stdlib.h>
 typedef int ElemType;
 typedef struct DNode
 {
@@ -31,7 +32,7 @@ void TraversalList(DNode *p)
     }
 }
 
-int main()
+int	main(int argc, char *argv[])
 {
     return 0;
 }

@@ -1,9 +1,5 @@
-/*
- * @Date: 2020-09-19 15:34:50
- * @LastEditors: bailiang
- * @LastEditTime: 2020-09-19 15:48:03
- */
-#include <iostream>
+#include <stdio.h>
+#include <stdlib.h>
 #define MaxSize 10 //静态链表的最大长度
 
 struct Node
@@ -18,9 +14,9 @@ typedef struct
     int next;
 } SLinkList[MaxSize];
 
-int main()
+int	main(int argc, char *argv[])
 {
-    struct Node x;
+     struct Node x;
     printf("%d",sizeof(x));
     struct Node a[MaxSize];
     printf("%d",sizeof(a));
@@ -28,3 +24,4 @@ int main()
     printf("%d",sizeof(s));
     return 0;
 }
+
