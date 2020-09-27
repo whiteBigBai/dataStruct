@@ -5,7 +5,8 @@ typedef int ElemType;
 typedef struct
 {
     ElemType data[MaxSize]; //用静态数组存放队列元素
-    int front, rear;        //队头指针和队尾指针  队尾指针指向队尾元素的后一个位置(下一个应该插入的位置)
+    int front, rear;        //队头指针和队尾指针  队尾指针指向队尾元素
+    int size;
 } SqQueue;
 
 /**
@@ -15,7 +16,9 @@ typedef struct
  */
 void InitQueue(SqQueue &Q)
 {
-    Q.front = Q.rear = 0; //初始时，队头和队尾指针都指向0
+    Q.front = 0;          //初始时，队头指针指向0
+    Q.rear = MaxSize - 1; //队尾指针指向MaxSize-1
+    Q.size = 0;
 }
 
 /**
@@ -25,20 +28,20 @@ void InitQueue(SqQueue &Q)
  */
 bool QueueEmpty(SqQueue Q)
 {
-    if (Q.rear == Q.front) //队空条件
+    if ((Q.rear + 1) % MaxSize == Q.front) //队空条件
         return true;
     else
         return false;
 }
 
 /**
- * @description: 判断队列是否已满
+ * @description: 判断队列是否已满 1.牺牲一个空间(Q.rear+2=Q.front) 2.增加tag或者size字段
  * @param {type} 
  * @return {type} 
  */
 bool QueueFull(SqQueue Q)
 {
-    if ((Q.rear + 1) % MaxSize == Q.front)
+    if (Q.size == MaxSize)
         return true;
     else
         return false;
@@ -51,10 +54,11 @@ bool QueueFull(SqQueue Q)
  */
 bool EnQueue(SqQueue &Q, ElemType e)
 {
-    if ((Q.rear + 1) % MaxSize == Q.front) //队列满报错
+    if (Q.size==MaxSize) //队列满报错
         return false;
-    Q.data[Q.rear] = e;
     Q.rear = (Q.rear + 1) % MaxSize; //队尾指针加1取模
+    Q.data[Q.rear] = e;
+    Q.size++;
     return true;
 }
 
@@ -68,6 +72,7 @@ bool DeQueue(SqQueue &Q, ElemType &e)
     if (Q.front == Q.rear) //队空，报错
         return false;
     e = Q.data[Q.front];
+    Q.size--;
     Q.front = (Q.front + 1) % MaxSize;
     return true;
 }
@@ -92,7 +97,7 @@ bool GetHead(SqQueue Q, ElemType &e)
  */
 int ElemCount(SqQueue Q)
 {
-    return (Q.rear + MaxSize - Q.front) % MaxSize;
+    return Q.size;
 }
 
 int main(int argc, char *argv[])

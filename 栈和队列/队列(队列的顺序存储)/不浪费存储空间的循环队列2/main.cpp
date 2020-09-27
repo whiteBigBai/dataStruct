@@ -6,6 +6,7 @@ typedef struct
 {
     ElemType data[MaxSize]; //用静态数组存放队列元素
     int front, rear;        //队头指针和队尾指针  队尾指针指向队尾元素的后一个位置(下一个应该插入的位置)
+    int tag;                //最近进行的操作时删除(0)/插入(1)
 } SqQueue;
 
 /**
@@ -16,6 +17,7 @@ typedef struct
 void InitQueue(SqQueue &Q)
 {
     Q.front = Q.rear = 0; //初始时，队头和队尾指针都指向0
+    Q.tag = 0;
 }
 
 /**
@@ -25,7 +27,7 @@ void InitQueue(SqQueue &Q)
  */
 bool QueueEmpty(SqQueue Q)
 {
-    if (Q.rear == Q.front) //队空条件
+    if (Q.front == Q.rear && Q.tag == 0) //队空条件
         return true;
     else
         return false;
@@ -38,7 +40,7 @@ bool QueueEmpty(SqQueue Q)
  */
 bool QueueFull(SqQueue Q)
 {
-    if ((Q.rear + 1) % MaxSize == Q.front)
+    if (Q.front == Q.rear && Q.tag == 1)
         return true;
     else
         return false;
@@ -51,9 +53,10 @@ bool QueueFull(SqQueue Q)
  */
 bool EnQueue(SqQueue &Q, ElemType e)
 {
-    if ((Q.rear + 1) % MaxSize == Q.front) //队列满报错
+    if (Q.front == Q.rear && Q.tag == 1) //队列满报错
         return false;
     Q.data[Q.rear] = e;
+    Q.tag = 1;
     Q.rear = (Q.rear + 1) % MaxSize; //队尾指针加1取模
     return true;
 }
@@ -65,9 +68,10 @@ bool EnQueue(SqQueue &Q, ElemType e)
  */
 bool DeQueue(SqQueue &Q, ElemType &e)
 {
-    if (Q.front == Q.rear) //队空，报错
+    if (Q.front == Q.rear && Q.tag == 0) //队空，报错
         return false;
     e = Q.data[Q.front];
+    Q.tag = 0;
     Q.front = (Q.front + 1) % MaxSize;
     return true;
 }
@@ -79,7 +83,7 @@ bool DeQueue(SqQueue &Q, ElemType &e)
  */
 bool GetHead(SqQueue Q, ElemType &e)
 {
-    if (Q.front == Q.rear) //队空，报错
+    if (Q.front == Q.rear && Q.tag == 0) //队空，报错
         return false;
     e = Q.data[Q.front];
     return true;
