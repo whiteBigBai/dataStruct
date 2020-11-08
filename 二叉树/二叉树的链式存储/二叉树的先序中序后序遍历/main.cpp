@@ -12,8 +12,6 @@ typedef struct BiTNode
     struct BiTNode *lchild, *rchild;
 } BiTNode, *BiTree;
 
-
-
 /**
  * @description:  先序遍历
  * @param {type} 
@@ -82,4 +80,3 @@ int treeDepth(BiTree T)
         return l > r ? l + 1 : r + 1; //树的深度=Max(左子树深度，右子树深度)+1
     }
 }
-

@@ -1,0 +1,11 @@
+digraph G {
+    node [shape=circle]
+    edge [arrowhead=none]
+    A -> B
+    A -> C
+    A -> D
+    B -> E
+    C -> F
+    C -> G
+    F -> H
+}
