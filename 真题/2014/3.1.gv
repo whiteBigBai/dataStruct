@@ -1,0 +1,18 @@
+digraph G {
+    graph [nodesep=0.1]
+    node [shape=circle]
+    edge [arrowhead=vee]
+    A -> B
+    A -> C
+    B [group=B]
+    _B [group=B, label="", width=0, style=invis]
+    B -> _B [style=invis] 
+    B -> D
+    C -> E
+    C -> F
+    E [group=E]
+    _E [group=E, label="", width=0, style=invis]
+    E -> _E [style=invis] 
+    E -> G
+}
+

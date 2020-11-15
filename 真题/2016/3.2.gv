@@ -1,0 +1,25 @@
+digraph G {
+    graph [nodesep=0.1]
+    node [shape=circle]
+    edge [arrowhead=vee]
+
+    42 -> 25
+    42 -> 17
+
+    17 -> 8
+    17 -> 9
+
+    25 -> 14
+    25 -> 11
+
+    11 -> 5
+    11 -> 6
+
+    _7[label="7"]
+
+    14 -> _7
+    14 -> 7
+
+    _7 -> 3
+    _7 -> 4
+}

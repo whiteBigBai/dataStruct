@@ -1,0 +1,22 @@
+#root: A  A的左面是BD 右面是EC
+
+#root: C A的右面连C C的左面连E
+
+#root: B A的左面是B B的右面是D
+
+digraph G {
+    graph [nodesep=0.1]
+    node [shape=circle]
+    edge [arrowhead=vee]
+    A -> B
+    A -> C
+    B [group=B]
+    C [group=C]
+    C -> E
+    _C [group=C, label="", width=0, style=invis]
+    C -> _C [style=invis] 
+    _B [group=B, label="", width=0, style=invis] 
+    B -> _B [style=invis]
+    B -> D    
+    
+}
