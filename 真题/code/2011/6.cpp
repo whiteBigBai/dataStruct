@@ -69,38 +69,38 @@ void LevelOrder(BiTree T)
 	}
 }
 
-void CreateBiTree(BiTree &T)
+void CreateBiTree(BiTree *T)
 {
 	char ch;
 	scanf("%c", &ch);
 	if (ch == '#')
-		T = NULL;
+		*T = NULL;
 	else
 	{
-		T = (BiTree)malloc(sizeof(BiTree));
-		T->data = ch;			 //给节点的数据域赋值
-		CreateBiTree(T->lchild); //递归创建左子树
-		CreateBiTree(T->rchild); //递归创建右子树
+		*T = (BiTree)malloc(sizeof(BiTree));
+		(*T)->data = ch;			 //给节点的数据域赋值
+		CreateBiTree(&(*T)->lchild); //递归创建左子树
+		CreateBiTree(&(*T)->rchild); //递归创建右子树
 	}
 	return;
 }
 
-void PreOrderT(BiTree T)
+void PreOrder(BiTree T)
 {
 	if (T) //如果该树节点存在
 	{
 		printf("%c", T->data); //先序遍历
-		PreOrderT(T->lchild);
-		PreOrderT(T->rchild);
+		PreOrder(T->lchild);
+		PreOrder(T->rchild);
 	}
 }
-void InOrderT(BiTree T)
+void InOrder(BiTree T)
 {
 	if (T) //如果该树节点存在
 	{
-		InOrderT(T->lchild); //中序遍历
+		InOrder(T->lchild); //中序遍历
 		printf("%c", T->data);
-		InOrderT(T->rchild);
+		InOrder(T->rchild);
 	}
 }
 void PostOrder(BiTree T)
@@ -120,12 +120,12 @@ int main(int argc, char **argv)
 	//AB#D##CE###
 	BiTree T = NULL; //先定义一个树节点指针，指向第一个树节点，也就是根节点
 	printf("请输入二叉树的数据，并以#为空节点\n");
-	CreateBiTree(T);
+	CreateBiTree(&T);
 	printf("该树的先序遍历结果为：");
-	PreOrderT(T);
+	PreOrder(T);
 	printf("\n");
 	printf("该树的中序遍历结果为：");
-	InOrderT(T);
+	InOrder(T);
 	printf("\n");
 	printf("该树的后序遍历结果为：");
 	PostOrder(T);

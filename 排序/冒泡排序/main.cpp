@@ -20,19 +20,21 @@ void BubbleSort(int A[], int n)
                 flag = true;
             }
         }
-        for (int k = 0; k < 8; k++)
-        {
-            printf("第%d趟A[%d]=%d--->", i, k, A[k]);
-        }
-        printf("\n");
         if (flag == false)
             return;
     }
 }
 
+
+
 int main(int argc, char *argv[])
 {
     int A[8] = {49, 38, 65, 97, 76, 13, 27, 49};
-    BubbleSort(A, 8);
+    int len = sizeof(A) / sizeof(len);
+    BubbleSort(A, len);
+    for (int k = 0; k < len; k++)
+    {
+        printf("A[%d]=%d--->", k, A[k]);
+    }
     return 0;
 }

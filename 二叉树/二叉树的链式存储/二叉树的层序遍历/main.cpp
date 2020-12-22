@@ -34,7 +34,7 @@ void LevelOrder(BiTree T)
     while (!IsEmpty(Q))
     {                  //队列不空则循环
         DeQueue(Q, p); //队头结点出队
-        visit[p];      //访问出队结点
+        visit(p);      //访问出队结点
         if (p->lchild != NULL)
             EnQueue(Q, p->lchild); //左孩子入队
         if (p->rchild != NULL)

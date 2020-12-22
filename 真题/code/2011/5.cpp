@@ -1,11 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define MAX_SIZE 10
-
 int BinSearch(int arr[], int key, int n)
 {
-	int left = 0, right = n - 1, middle = 0;
+	int left = 0, right = n, middle = 0;
 	while (left < right)
 	{
 		middle = (left + right) / 2;
@@ -27,14 +25,19 @@ int BinSearch(int arr[], int key, int n)
 
 int main(int argc, char **argv)
 {
-	int arr[MAX_SIZE];
-	for (int i = 0; i < MAX_SIZE; i++)
+	int len=0;
+	printf("请输入数组元素的个数");
+	scanf("%d",&len);
+	int arr[len];
+	for (int i = 0; i < len; i++)
 	{
+		printf("请输入数组元素");
 		scanf("%d", &arr[i]);
 	}
 	int key;
+	printf("请输入关键字");
 	scanf("%d", &key);
-	int middle = BinSearch(arr, key, MAX_SIZE);
+	int middle = BinSearch(arr, key, len);
 	printf("索引位置为: %d", middle);
 	return 0;
 }
