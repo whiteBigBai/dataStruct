@@ -14,15 +14,15 @@ typedef struct node
 
 typedef NODE *TREE;
 
-#define SET(pos, c, l)                      \
-	{                                       \
+#define SET(pos, c, l)						\
+{                                       	\
 		pos = (NODE *)malloc(sizeof(NODE)); \
 		pos->data = c;                      \
 		pos->level = l;                     \
 		pos->fch = NULL;                    \
 		pos->nsib = NULL;                   \
 		return pos;                         \
-	}
+}
 
 void Display(TREE tree);
 
